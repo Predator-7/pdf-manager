@@ -1,9 +1,13 @@
-package com.pdfmanager.pdfmanager;
+package com.pdfmanager;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 
 @SpringBootApplication
+//@ComponentScan({"com.pdfmanager"})
+
 public class PdfManagerApplication {
 
 	public static void main(String[] args) {

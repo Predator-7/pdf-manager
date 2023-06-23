@@ -1,4 +1,4 @@
-package com.pdfmanager.pdfmanager;
+package com.pdfmanager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
