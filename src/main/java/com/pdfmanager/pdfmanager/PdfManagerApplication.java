@@ -8,11 +8,9 @@ public class PdfManagerApplication {
 
 	public static void main(String[] args) {
 
-		SpringApplication.run(PdfManagerApplication.class, args
+		SpringApplication.run(PdfManagerApplication.class, args);
 
-
-
-		);
+		System.out.println("Test App");
 	}
 
 }
