@@ -1,6 +1,6 @@
 package com.pdfmanager.repository;
 
-import com.pdfmanager.Entity.Users;
+import com.pdfmanager.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -13,6 +13,9 @@ public interface UserRepository extends JpaRepository<Users, Long> {
         Optional<Users> findById(Long Id);
 
         Users findByEmailAndUserName(String email, String userName);
+
+
+
 
 
 

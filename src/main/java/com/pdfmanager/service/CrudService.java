@@ -1,7 +1,9 @@
 package com.pdfmanager.service;
 
-import com.pdfmanager.Entity.Users;
+import com.pdfmanager.dtos.UserDto;
+import com.pdfmanager.entity.Users;
 import com.pdfmanager.repository.UserRepository;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Log4j2
 public class CrudService {
 
     @Autowired
@@ -28,5 +31,19 @@ public class CrudService {
 
     public Users findUserByEmailAndUserName(String email, String userName) {
         return userRepository.findByEmailAndUserName(email, userName);
+    }
+
+
+
+    public Users saveUser(UserDto userDto){
+
+        Users users = new Users();
+        users.setUserName(userDto.getUserName());
+        users.setEmail( userDto.getEmail());
+        users.setPassword(userDto.getPassword());
+        userRepository.save(users);
+        return users;
+
+
     }
 }

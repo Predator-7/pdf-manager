@@ -1,9 +1,9 @@
-package com.pdfmanager.service;
+package com.pdfmanager.common;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class EncryptionService {
+public class EncryptionUtils {
 
     public Integer encryptOtp(String userName , String password){
         Integer size = userName.length() + password.length();

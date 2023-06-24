@@ -3,9 +3,10 @@ package com.pdfmanager.controller;
 import com.pdfmanager.dtos.AuthUserDto;
 import com.pdfmanager.dtos.UserDto;
 
+import com.pdfmanager.entity.Users;
 import com.pdfmanager.service.AuthenticationService;
 import com.pdfmanager.service.EmailService;
-import com.pdfmanager.service.EncryptionService;
+import com.pdfmanager.common.EncryptionUtils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
@@ -23,7 +24,7 @@ public class Controllers {
     private EmailService emailService;
 
     @Autowired
-    private EncryptionService encryptionService;
+    private EncryptionUtils encryptionUtils;
 
     @GetMapping("test")
     public String test(){
@@ -38,7 +39,7 @@ public class Controllers {
 
         try {
 
-            Integer otp = encryptionService.encryptOtp(userDto.getUserName(), userDto.getPassword());
+            Integer otp = encryptionUtils.encryptOtp(userDto.getUserName(), userDto.getPassword());
 
             emailService.sendEmail(userDto.getEmail(), "Please verify your email", "Your otp is - " + otp);
 
@@ -48,12 +49,11 @@ public class Controllers {
 
         return "Email sent";
 
-
     }
 
 
     @PostMapping("signup")
-    public UserDto signup(@RequestBody AuthUserDto authUser) {
+    public Users signup(@RequestBody AuthUserDto authUser) {
 
         return authenticationService.signup(authUser);
     }
