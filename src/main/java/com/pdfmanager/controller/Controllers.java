@@ -64,21 +64,18 @@ public class Controllers {
 
     @CrossOrigin("*")
     @PostMapping(value = "login" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Users> login(@RequestBody UserDto userDto){
+    public Users login(@RequestBody UserDto userDto){
 
         log.info(userDto.getEmail());
         log.info(userDto.getUserName());
         log.info(userDto.getPassword());
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Access-Control-Allow-Origin", "*"); // Allow requests from all origins
-        headers.add("Access-Control-Allow-Methods", "POST"); // Allow POST requests
-        headers.add("Access-Control-Allow-Headers", "Content-Type"); // Allow the Content-Type header
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Access-Control-Allow-Origin", "*"); // Allow requests from all origins
+//        headers.add("Access-Control-Allow-Methods", "POST"); // Allow POST requests
+//        headers.add("Access-Control-Allow-Headers", "Content-Type"); // Allow the Content-Type header
 
-        return ResponseEntity.ok().headers(headers).body(authenticationService.login(userDto));
+        return authenticationService.login(userDto);
     }
-
-
-
 
 }

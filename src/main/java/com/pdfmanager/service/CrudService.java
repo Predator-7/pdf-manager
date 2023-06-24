@@ -36,7 +36,7 @@ public class CrudService {
     }
     // findByEmailAndUserNameAndPassword(String email, String userName, String password);
 
-    @CrossOrigin("*")
+
     public Users verifyUser(String email, String userName, String password){
         return userRepository.findByEmailAndUserNameAndPassword(email,userName,password);
     }
