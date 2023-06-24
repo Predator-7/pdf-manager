@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Log4j2
+@CrossOrigin
 @RequestMapping("pdf-manager")
 public class Controllers {
 
@@ -25,13 +26,13 @@ public class Controllers {
 
     @Autowired
     private EncryptionUtils encryptionUtils;
-
+    @CrossOrigin
     @GetMapping("test")
     public String test(){
         return "test";
     }
 
-
+    @CrossOrigin
     @PostMapping("getOtp")
     public String getOtp(@RequestBody UserDto userDto){
 
@@ -50,7 +51,7 @@ public class Controllers {
         return "Email sent";
 
     }
-
+    @CrossOrigin
 
     @PostMapping("signup")
     public Users signup(@RequestBody AuthUserDto authUser) {
@@ -62,6 +63,8 @@ public class Controllers {
     public Users login(@RequestBody UserDto userDto){
         return authenticationService.login(userDto);
     }
+
+
 
 
 }
