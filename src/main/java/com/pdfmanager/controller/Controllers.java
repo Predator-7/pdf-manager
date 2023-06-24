@@ -78,4 +78,10 @@ public class Controllers {
         return authenticationService.login(userDto);
     }
 
+//    @CrossOrigin("*")
+//    public Users getUserProfile(UserDto userDto){
+//
+//
+//    }
+
 }
