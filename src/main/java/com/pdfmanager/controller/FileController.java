@@ -3,16 +3,19 @@ package com.pdfmanager.controller;
 import com.pdfmanager.dtos.FileResponseDto;
 import com.pdfmanager.dtos.MessageResponseDto;
 import com.pdfmanager.entity.Files;
+import com.pdfmanager.exception.InvalidParameterException;
 import com.pdfmanager.service.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @CrossOrigin("*")
@@ -63,9 +66,16 @@ public class FileController {
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
         Files files = storageService.getFile(id);
 
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + files.getName() + "\"")
-                .body(files.getData());
+        if(Objects.isNull(files)){
+            throw new InvalidParameterException("Pdf Not Found!");
+        }
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.set("Content-Disposition", "inline; filename=\"" + files.getName() + "\"");
+        headers.setContentLength(files.getData().length);
+
+        return new ResponseEntity<>(files.getData(), headers, HttpStatus.OK);
     }
 
 
