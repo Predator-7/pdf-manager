@@ -8,12 +8,14 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Objects;
 
 @Service
 @Log4j2
+@CrossOrigin
 public class AuthenticationService {
 
     @Autowired
@@ -21,7 +23,7 @@ public class AuthenticationService {
 
     @Autowired
     private CrudService crudService;
-
+    @CrossOrigin
     public Users signup(AuthUserDto authUser){
 
         Integer authValue = encryptionUtils.encryptOtp(authUser.getUserName(), authUser.getPassword());
@@ -48,7 +50,7 @@ public class AuthenticationService {
         }
             throw new IllegalArgumentException("Invalid Credentials");
     }
-
+    @CrossOrigin
     public Users login(UserDto userDto){
         Users users = crudService.verifyUser(userDto.getEmail(), userDto.getUserName(), userDto.getPassword());
 

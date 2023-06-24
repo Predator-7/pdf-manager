@@ -52,13 +52,12 @@ public class Controllers {
 
     }
     @CrossOrigin
-
     @PostMapping("signup")
     public Users signup(@RequestBody AuthUserDto authUser) {
 
         return authenticationService.signup(authUser);
     }
-
+    @CrossOrigin
     @PostMapping("login")
     public Users login(@RequestBody UserDto userDto){
         return authenticationService.login(userDto);
