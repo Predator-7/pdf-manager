@@ -9,6 +9,8 @@ import com.pdfmanager.service.EmailService;
 import com.pdfmanager.common.EncryptionUtils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,8 +61,13 @@ public class Controllers {
     }
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("login")
-    public Users login(@RequestBody UserDto userDto){
-        return authenticationService.login(userDto);
+    public ResponseEntity<Users> login(@RequestBody UserDto userDto){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Access-Control-Allow-Origin", "*"); // Allow requests from all origins
+        headers.add("Access-Control-Allow-Methods", "POST"); // Allow POST requests
+        headers.add("Access-Control-Allow-Headers", "Content-Type"); // Allow the Content-Type header
+
+        return ResponseEntity.ok().headers(headers).body(authenticationService.login(userDto));
     }
 
 
