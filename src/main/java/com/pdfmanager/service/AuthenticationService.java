@@ -50,7 +50,7 @@ public class AuthenticationService {
         }
             throw new IllegalArgumentException("Invalid Credentials");
     }
-    @CrossOrigin
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Users login(UserDto userDto){
         Users users = crudService.verifyUser(userDto.getEmail(), userDto.getUserName(), userDto.getPassword());
 

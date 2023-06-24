@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Log4j2
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("pdf-manager")
 public class Controllers {
 
@@ -57,7 +57,7 @@ public class Controllers {
 
         return authenticationService.signup(authUser);
     }
-    @CrossOrigin
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("login")
     public Users login(@RequestBody UserDto userDto){
         return authenticationService.login(userDto);
