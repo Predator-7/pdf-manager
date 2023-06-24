@@ -29,8 +29,12 @@ public class CrudService {
         return userRepository.findAll();
     }
 
-    public Users findUserByEmailAndUserName(String email, String userName) {
+    public List<Users> findUserByEmailAndUserName(String email, String userName) {
         return userRepository.findByEmailAndUserName(email, userName);
+    }
+    // findByEmailAndUserNameAndPassword(String email, String userName, String password);
+    public Users verifyUser(String email, String userName, String password){
+        return userRepository.findByEmailAndUserNameAndPassword(email,userName,password);
     }
 
 

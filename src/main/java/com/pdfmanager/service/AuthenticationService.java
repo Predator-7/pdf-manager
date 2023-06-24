@@ -7,7 +7,9 @@ import com.pdfmanager.dtos.UserDto;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -32,24 +34,35 @@ public class AuthenticationService {
             UserDto userDto = new UserDto(authUser.getUserName() , authUser.getEmail(), authUser.getPassword());
             // save to db
 
-        //    List<Users> users = crudService.getCustomersByName("ansh");
-       //     log.info(users.size());
+            List<Users> users = crudService.findUserByEmailAndUserName(userDto.getEmail(), userDto.getUserName());
 
-       //     Optional<Users> users1 = crudService.getCustomersById(1l);
-       //     log.info(users1.get().getUserName());
-
-            Users users = crudService.findUserByEmailAndUserName(userDto.getEmail(), userDto.getUserName());
-
-            if(Objects.isNull(users)){
+            if(!CollectionUtils.isEmpty(users)){
                 // We have to throw error user already registered!
+                log.info("User already registered!");
             }
-            log.info(Objects.isNull(users) ? null : users.getId());// Making null safe
+          //  log.info(Objects.isNull(users) ? null : users.getId());// Making null safe
             Users users1 = crudService.saveUser(userDto);
 
             return users1;
 
         }
             throw new IllegalArgumentException("Invalid Credentials");
+    }
+
+    public Users login(UserDto userDto){
+        Users users = crudService.verifyUser(userDto.getEmail(), userDto.getUserName(), userDto.getPassword());
+
+        if(!Objects.isNull(users)){
+             Users users1= new Users();
+             users1.setUserName(userDto.getUserName());
+             users1.setEmail(userDto.getEmail());
+             return users1;
+        }
+
+        else{
+            throw new IllegalArgumentException("User Not found!");
+        }
+
     }
 
 

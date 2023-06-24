@@ -58,5 +58,10 @@ public class Controllers {
         return authenticationService.signup(authUser);
     }
 
+    @PostMapping("login")
+    public Users login(@RequestBody UserDto userDto){
+        return authenticationService.login(userDto);
+    }
+
 
 }
