@@ -10,6 +10,7 @@ import com.pdfmanager.common.EncryptionUtils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
@@ -59,8 +60,10 @@ public class Controllers {
 
         return authenticationService.signup(authUser);
     }
+
+
     @CrossOrigin("*")
-    @PostMapping("login")
+    @PostMapping(value = "login" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Users> login(@RequestBody UserDto userDto){
 
         log.info(userDto.getEmail());
