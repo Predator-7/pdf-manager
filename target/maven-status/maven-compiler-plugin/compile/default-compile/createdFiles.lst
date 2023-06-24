@@ -1,3 +1,4 @@
+com\pdfmanager\service\UserService.class
 com\pdfmanager\PdfManagerApplication$1.class
 com\pdfmanager\entity\Users.class
 com\pdfmanager\service\EmailService.class
