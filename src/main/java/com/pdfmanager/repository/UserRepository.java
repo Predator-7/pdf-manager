@@ -14,7 +14,7 @@ public interface UserRepository extends JpaRepository<Users, Long> {
         Optional<Users> findById(Long Id);
 
         List<Users> findByEmailAndUserName(String email, String userName);
-        @CrossOrigin(origins = "*", allowedHeaders = "*")
+        @CrossOrigin("*")
         Users findByEmailAndUserNameAndPassword(String email, String userName, String password);
 
 

@@ -53,15 +53,20 @@ public class Controllers {
         return "Email sent";
 
     }
-    @CrossOrigin
+    @CrossOrigin("*")
     @PostMapping("signup")
     public Users signup(@RequestBody AuthUserDto authUser) {
 
         return authenticationService.signup(authUser);
     }
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @CrossOrigin("*")
     @PostMapping("login")
     public ResponseEntity<Users> login(@RequestBody UserDto userDto){
+
+        log.info(userDto.getEmail());
+        log.info(userDto.getUserName());
+        log.info(userDto.getPassword());
+
         HttpHeaders headers = new HttpHeaders();
         headers.add("Access-Control-Allow-Origin", "*"); // Allow requests from all origins
         headers.add("Access-Control-Allow-Methods", "POST"); // Allow POST requests
