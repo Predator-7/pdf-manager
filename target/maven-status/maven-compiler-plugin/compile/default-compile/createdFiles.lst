@@ -1,4 +1,5 @@
 com\pdfmanager\controller\Controllers.class
+com\pdfmanager\config\CorsConfiguration.class
 com\pdfmanager\common\EncryptionUtils.class
 com\pdfmanager\dtos\AuthUserDto.class
 com\pdfmanager\entity\Users.class
