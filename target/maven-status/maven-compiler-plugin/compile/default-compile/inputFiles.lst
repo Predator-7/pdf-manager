@@ -1,6 +1,8 @@
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\entity\Files.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\service\AuthenticationService.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\AuthUserDto.java
+C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\exception\InternalServerException.java
+C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\exception\InvalidParameterException.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\controller\FileController.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\FileResponseDto.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\service\UserService.java
@@ -10,6 +12,7 @@ C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\co
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\repository\FileRepository.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\repository\UserRepository.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\UserDto.java
+C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\exception\CustomExceptionHandler.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\service\EmailService.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\PdfManagerApplication.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\controller\Controllers.java

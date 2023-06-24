@@ -76,10 +76,6 @@ public class Controllers {
         log.info(userDto.getUserName());
         log.info(userDto.getPassword());
 
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.add("Access-Control-Allow-Origin", "*"); // Allow requests from all origins
-//        headers.add("Access-Control-Allow-Methods", "POST"); // Allow POST requests
-//        headers.add("Access-Control-Allow-Headers", "Content-Type"); // Allow the Content-Type header
 
         return authenticationService.login(userDto);
     }

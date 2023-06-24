@@ -4,6 +4,7 @@ import com.pdfmanager.common.EncryptionUtils;
 import com.pdfmanager.entity.Users;
 import com.pdfmanager.dtos.AuthUserDto;
 import com.pdfmanager.dtos.UserDto;
+import com.pdfmanager.exception.InvalidParameterException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 import java.util.Objects;
+
+
+// Conatains Login & Signup Controllers.
 
 @Service
 @Log4j2
@@ -29,9 +33,6 @@ public class AuthenticationService {
         Integer authValue = encryptionUtils.encryptOtp(authUser.getUserName(), authUser.getPassword());
 
 
-        log.info(authUser.getAuthKey());
-        log.info(authValue);
-
         if(authValue.equals(authUser.getAuthKey())){
             UserDto userDto = new UserDto(authUser.getUserName() , authUser.getEmail(), authUser.getPassword());
             // save to db
@@ -41,6 +42,7 @@ public class AuthenticationService {
             if(!CollectionUtils.isEmpty(users)){
                 // We have to throw error user already registered!
                 log.info("User already registered!");
+                throw new InvalidParameterException("User Already Registered!");
             }
           //  log.info(Objects.isNull(users) ? null : users.getId());// Making null safe
             Users users1 = crudService.saveUser(userDto);
