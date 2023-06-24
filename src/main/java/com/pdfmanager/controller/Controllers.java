@@ -17,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Log4j2
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -78,9 +80,15 @@ public class Controllers {
 
     @CrossOrigin("*")
     @GetMapping(value = "profile" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Users getUserProfile(UserDto userDto){
+    public Users getUserProfile(@RequestBody UserDto userDto){
 
         return userService.getUserProfile(userDto);
+    }
+
+    @CrossOrigin("*")
+    @GetMapping(value = "users" , produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Users> getAllUsers(){
+        return userService.getAllUsers();
     }
 
 }

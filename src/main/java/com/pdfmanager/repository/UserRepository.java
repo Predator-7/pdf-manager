@@ -1,6 +1,7 @@
 package com.pdfmanager.repository;
 
 import com.pdfmanager.entity.Users;
+import org.apache.catalina.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -18,6 +19,10 @@ public interface UserRepository extends JpaRepository<Users, Long> {
         Users findByEmailAndUserNameAndPassword(String email, String userName, String password);
 
         Users findByEmailAndPassword(String email , String password);
+
+        Users findByIdAndEmail(Long id , String email);
+
+
 
 
 

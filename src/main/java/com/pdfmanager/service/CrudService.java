@@ -47,6 +47,11 @@ public class CrudService {
         return userRepository.findByEmailAndPassword(email , password);
     }
 
+    public Users findByIdAndEmail(Long id , String email){
+        return userRepository.findByIdAndEmail(id , email);
+    }
+
+
 
 
     public Users saveUser(UserDto userDto){
@@ -57,7 +62,9 @@ public class CrudService {
         users.setPassword(userDto.getPassword());
         userRepository.save(users);
         return users;
+    }
 
-
+    public List<Users> getAllUsers(){
+        return userRepository.findAll();
     }
 }
