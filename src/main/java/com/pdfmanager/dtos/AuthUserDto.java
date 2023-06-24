@@ -4,11 +4,11 @@ import lombok.Getter;
 
 @Getter
 
-public class AuthUser extends User{
+public class AuthUserDto extends UserDto {
 
     Integer authKey;
 
-    public AuthUser() {
+    public AuthUserDto() {
         super(); // Invoke parent class constructor
     }
 
