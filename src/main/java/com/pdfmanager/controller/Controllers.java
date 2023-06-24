@@ -4,6 +4,7 @@ import com.pdfmanager.dtos.AuthUserDto;
 import com.pdfmanager.dtos.UserDto;
 
 import com.pdfmanager.entity.Users;
+import com.pdfmanager.exception.InternalServerException;
 import com.pdfmanager.service.AuthenticationService;
 import com.pdfmanager.service.EmailService;
 import com.pdfmanager.common.EncryptionUtils;
@@ -42,10 +43,8 @@ public class Controllers {
     }
 
     @CrossOrigin
-    @PostMapping("getOtp")
+    @PostMapping(value = "getOtp" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public String getOtp(@RequestBody UserDto userDto){
-
-       // String otp = (user.getUserName() + user.getPassword()).toString();
 
         try {
 
@@ -55,13 +54,15 @@ public class Controllers {
 
         } catch (MailException ex){
             log.info(ex.getMessage());
+            throw new InternalServerException(ex.getMessage());
+
         }
 
         return "Email sent";
 
     }
     @CrossOrigin("*")
-    @PostMapping("signup")
+    @PostMapping(value = "signup" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Users signup(@RequestBody AuthUserDto authUser) {
 
         return authenticationService.signup(authUser);
@@ -72,19 +73,14 @@ public class Controllers {
     @PostMapping(value = "login" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Users login(@RequestBody UserDto userDto){
 
-        log.info(userDto.getEmail());
-        log.info(userDto.getUserName());
-        log.info(userDto.getPassword());
-
-
         return authenticationService.login(userDto);
     }
 
     @CrossOrigin("*")
+    @GetMapping(value = "profile" , produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public Users getUserProfile(UserDto userDto){
 
         return userService.getUserProfile(userDto);
-
     }
 
 }
