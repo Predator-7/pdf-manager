@@ -7,6 +7,7 @@ import com.pdfmanager.entity.Users;
 import com.pdfmanager.service.AuthenticationService;
 import com.pdfmanager.service.EmailService;
 import com.pdfmanager.common.EncryptionUtils;
+import com.pdfmanager.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -29,6 +30,11 @@ public class Controllers {
 
     @Autowired
     private EncryptionUtils encryptionUtils;
+
+    @Autowired
+    private UserService userService;
+
+
     @CrossOrigin
     @GetMapping("test")
     public String test(){
@@ -78,10 +84,11 @@ public class Controllers {
         return authenticationService.login(userDto);
     }
 
-//    @CrossOrigin("*")
-//    public Users getUserProfile(UserDto userDto){
-//
-//
-//    }
+    @CrossOrigin("*")
+    public Users getUserProfile(UserDto userDto){
+
+        return userService.getUserProfile(userDto);
+
+    }
 
 }

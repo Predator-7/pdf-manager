@@ -4,6 +4,7 @@ import com.pdfmanager.dtos.UserDto;
 import com.pdfmanager.entity.Users;
 import com.pdfmanager.repository.UserRepository;
 import lombok.extern.log4j.Log4j2;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -40,6 +41,10 @@ public class CrudService {
 
     public Users verifyUser(String email, String userName, String password){
         return userRepository.findByEmailAndUserNameAndPassword(email,userName,password);
+    }
+
+    public Users findUserbyEmailAndPassword(String email , String password){
+        return userRepository.findByEmailAndPassword(email , password);
     }
 
 
