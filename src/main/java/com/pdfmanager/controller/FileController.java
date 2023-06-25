@@ -2,9 +2,13 @@ package com.pdfmanager.controller;
 
 import com.pdfmanager.dtos.FileResponseDto;
 import com.pdfmanager.dtos.MessageResponseDto;
+import com.pdfmanager.dtos.ShareFileDto;
 import com.pdfmanager.entity.Files;
+import com.pdfmanager.entity.Users;
 import com.pdfmanager.exception.InvalidParameterException;
+import com.pdfmanager.service.CrudService;
 import com.pdfmanager.service.FileStorageService;
+import com.pdfmanager.service.ShareFileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,6 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @CrossOrigin("*")
@@ -25,6 +30,12 @@ public class FileController {
 
     @Autowired
     private FileStorageService storageService;
+
+    @Autowired
+    private ShareFileService shareFileService;
+
+    @Autowired
+    private CrudService crudService;
 
     @PostMapping("/upload")
     public ResponseEntity<MessageResponseDto> uploadFile(@RequestParam("file") MultipartFile file) {
@@ -47,7 +58,7 @@ public class FileController {
         List<FileResponseDto> files = storageService.getAllFiles().map(dbFile -> {
             String fileDownloadUri = ServletUriComponentsBuilder
                     .fromCurrentContextPath()
-                    .path("/files/")
+                    .path("pdf-manager/files/")
                     .path(dbFile.getId().toString())
                     .toUriString();
 
@@ -77,6 +88,28 @@ public class FileController {
 
         return new ResponseEntity<>(files.getData(), headers, HttpStatus.OK);
     }
+
+
+    // Share Api to share the pdfs
+
+    @PostMapping("/share")
+    private String shareFile(@RequestBody ShareFileDto shareFileDto){
+
+        Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
+
+        if(sender.isEmpty()){
+            throw new InvalidParameterException("Unauthorised sender!");
+        }
+
+        Optional<Users> reciever = crudService.getUserById(shareFileDto.getRecieverId());
+
+        if(reciever.isEmpty()){
+            throw new InvalidParameterException("Unauthorised reciever!");
+        }
+
+        return shareFileService.saveFileShareDetails(shareFileDto);
+    }
+
 
 
 

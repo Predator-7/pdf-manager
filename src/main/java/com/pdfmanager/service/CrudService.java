@@ -24,7 +24,7 @@ public class CrudService {
         return userRepository.findByUserName(name);
     }
 
-    public Optional<Users> getCustomersById(Long id) {
+    public Optional<Users> getUserById(Long id) {
         return userRepository.findById(id);
     }
 
