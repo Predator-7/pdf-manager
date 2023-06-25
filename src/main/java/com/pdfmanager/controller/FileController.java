@@ -124,17 +124,17 @@ public class FileController {
     @CrossOrigin(origins = "http://localhost:3000") // Adjust the origin according to your frontend application's URL
     @PostMapping("/share")
     public ResponseEntity<String> shareFile(@RequestBody ShareFileDto shareFileDto) {
-        Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
+      //  Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
 
-        if (sender.isEmpty()) {
-            throw new InvalidParameterException("Unauthorized sender!");
-        }
+//        if (sender.isEmpty()) {
+//            throw new InvalidParameterException("Unauthorized sender!");
+//        }
 
-        Optional<Users> receiver = crudService.getUserById(shareFileDto.getRecieverId());
+     //   Optional<Users> receiver = crudService.getUserById(shareFileDto.getRecieverId());
 
-        if (receiver.isEmpty()) {
-            throw new InvalidParameterException("Unauthorized receiver!");
-        }
+//        if (receiver.isEmpty()) {
+//            throw new InvalidParameterException("Unauthorized receiver!");
+//        }
 
         shareFileService.saveFileShareDetails(shareFileDto);
 

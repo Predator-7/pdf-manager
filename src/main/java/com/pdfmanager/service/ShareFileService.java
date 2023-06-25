@@ -16,7 +16,7 @@ public class ShareFileService {
 
     @Autowired
     private SharedFilesRepository sharedFilesRepository;
-    @CrossOrigin("*")
+    @CrossOrigin(origins = "http://localhost:3000")
     public String saveFileShareDetails(ShareFileDto shareFileDto){
 
         try{
