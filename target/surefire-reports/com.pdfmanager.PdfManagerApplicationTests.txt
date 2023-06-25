@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.pdfmanager.PdfManagerApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.483 s - in com.pdfmanager.PdfManagerApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.879 s - in com.pdfmanager.PdfManagerApplicationTests

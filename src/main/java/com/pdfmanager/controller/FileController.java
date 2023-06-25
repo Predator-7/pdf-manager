@@ -28,8 +28,8 @@ import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping("pdf-manager")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("pdf-manager")
 public class FileController {
 
     @Autowired
@@ -43,9 +43,9 @@ public class FileController {
 
     @Autowired
     private UserService userService;
-
-    @PostMapping("/upload")
     @CrossOrigin("*")
+    @PostMapping("/upload")
+
     public ResponseEntity<MessageResponseDto> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
 
@@ -60,9 +60,9 @@ public class FileController {
         }
     }
 
-
-    @GetMapping("/files")
     @CrossOrigin("*")
+    @GetMapping("/files")
+
     public ResponseEntity<List<FileResponseDto>> getListFiles() {
         List<FileResponseDto> files = storageService.getAllFiles().map(dbFile -> {
             String fileDownloadUri = ServletUriComponentsBuilder
@@ -122,9 +122,9 @@ public class FileController {
     }
 
     // Get Inbox
-
-    @GetMapping("inbox")
     @CrossOrigin("*")
+    @GetMapping("inbox")
+
     private List<InboxResponseDto> getInbox(@RequestParam Long id){
         Optional<Users> users = crudService.getUserById(id);
 
