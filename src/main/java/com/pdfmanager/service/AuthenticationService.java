@@ -62,7 +62,7 @@ public class AuthenticationService {
         }
 
         Users users1 = new Users();
-        users1.setUserName(userDto.getUserName());
+        users1.setUserName(users.getUserName());
         users1.setId(users.getId());
         users1.setEmail(userDto.getEmail());
         return users1;
