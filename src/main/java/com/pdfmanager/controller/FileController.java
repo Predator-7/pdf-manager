@@ -26,9 +26,10 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@CrossOrigin("*")
+
 @RestController
 @RequestMapping("pdf-manager")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class FileController {
 
     @Autowired
