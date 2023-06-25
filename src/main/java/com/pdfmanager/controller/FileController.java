@@ -80,9 +80,9 @@ public class FileController {
         return ResponseEntity.status(HttpStatus.OK).body(files);
     }
 
-
-    @GetMapping("/files/{id}")
     @CrossOrigin("*")
+    @GetMapping("/files/{id}")
+
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
         Files files = storageService.getFile(id);
 
@@ -100,9 +100,9 @@ public class FileController {
 
 
     // Share Api to share the pdfs
-
-    @PostMapping("/share")
     @CrossOrigin("*")
+    @PostMapping("/share")
+
     private String shareFile(@RequestBody ShareFileDto shareFileDto){
 
         Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());

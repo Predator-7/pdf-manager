@@ -1,3 +1,4 @@
+com\pdfmanager\repository\CommentRepository.class
 com\pdfmanager\exception\CustomExceptionHandler.class
 com\pdfmanager\service\UserService.class
 com\pdfmanager\dtos\InboxResponseDto.class
@@ -12,6 +13,7 @@ com\pdfmanager\controller\Controllers.class
 com\pdfmanager\dtos\FileResponseDto.class
 com\pdfmanager\exception\InvalidParameterException.class
 com\pdfmanager\dtos\MessageResponseDto.class
+com\pdfmanager\controller\CommentController.class
 com\pdfmanager\entity\SharedFiles.class
 com\pdfmanager\exception\InternalServerException.class
 com\pdfmanager\dtos\UserDto.class
@@ -22,6 +24,7 @@ com\pdfmanager\repository\SharedFilesRepository.class
 com\pdfmanager\common\EncryptionUtils.class
 com\pdfmanager\dtos\AuthUserDto.class
 com\pdfmanager\controller\FileController.class
+com\pdfmanager\entity\Comment.class
 com\pdfmanager\dtos\ErrorResponseDto.class
 com\pdfmanager\repository\UserRepository.class
 com\pdfmanager\service\ShareFileService.class
