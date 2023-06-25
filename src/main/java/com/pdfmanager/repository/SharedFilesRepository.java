@@ -7,9 +7,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 @Repository
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 public interface SharedFilesRepository extends JpaRepository<SharedFiles , Long> {
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "*")
     List<SharedFiles> findAllByRecieverId(Long receiverId);
+
+    List<SharedFiles> findAllBySenderId(Long senderId);
+
+
 
 }

@@ -10,9 +10,11 @@ com\pdfmanager\PdfManagerApplication.class
 com\pdfmanager\repository\FileRepository.class
 com\pdfmanager\dtos\ShareFileDto.class
 com\pdfmanager\controller\Controllers.class
+com\pdfmanager\dtos\ShareExistingFileDto.class
 com\pdfmanager\dtos\FileResponseDto.class
 com\pdfmanager\exception\InvalidParameterException.class
 com\pdfmanager\dtos\MessageResponseDto.class
+com\pdfmanager\dtos\CommentDto.class
 com\pdfmanager\controller\CommentController.class
 com\pdfmanager\entity\SharedFiles.class
 com\pdfmanager\exception\InternalServerException.class
@@ -26,5 +28,6 @@ com\pdfmanager\dtos\AuthUserDto.class
 com\pdfmanager\controller\FileController.class
 com\pdfmanager\entity\Comment.class
 com\pdfmanager\dtos\ErrorResponseDto.class
+com\pdfmanager\dtos\UploadFileDto.class
 com\pdfmanager\repository\UserRepository.class
 com\pdfmanager\service\ShareFileService.class

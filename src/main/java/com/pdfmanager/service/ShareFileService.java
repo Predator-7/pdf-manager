@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 
 @Service
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class ShareFileService {
 
     @Autowired
     private SharedFilesRepository sharedFilesRepository;
-    @CrossOrigin(origins = "http://localhost:3000")
+
     public String saveFileShareDetails(ShareFileDto shareFileDto){
 
         try{
@@ -35,10 +35,21 @@ public class ShareFileService {
 
     }
     @CrossOrigin("*")
-    public List<SharedFiles> getInbox(Long id){
+    public List<SharedFiles> getSharedPdfs(Long id){
 
         return sharedFilesRepository.findAllByRecieverId(id);
     }
+
+    @CrossOrigin("*")
+    public List<SharedFiles> getUploadedPdfs(Long id){
+
+        return sharedFilesRepository.findAllBySenderId(id);
+    }
+
+
+   // @CrossOrigin("*")
+
+
 
 
 

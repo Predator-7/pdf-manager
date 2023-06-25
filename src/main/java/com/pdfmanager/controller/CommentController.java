@@ -17,13 +17,13 @@ public class CommentController {
         this.commentRepository = commentRepository;
     }
 
-    @GetMapping
+    @GetMapping("comments")
     @CrossOrigin("*")
     public List<Comment> getComments() {
         return commentRepository.findByParentCommentIsNull();
     }
 
-    @PostMapping
+    @PostMapping("createComment")
     @CrossOrigin("*")
     public Comment createComment(@RequestBody Comment comment) {
         return commentRepository.save(comment);
