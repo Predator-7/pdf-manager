@@ -101,24 +101,44 @@ public class FileController {
 
 
     // Share Api to share the pdfs
-    @CrossOrigin("*")
-    @PostMapping("/share" )
-    public String shareFile(@RequestBody ShareFileDto shareFileDto){
+//    @CrossOrigin("*")
+//    @PostMapping("/share" )
+//    public String shareFile(@RequestBody ShareFileDto shareFileDto){
+//
+//
+//        Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
+//
+////        if(sender.isEmpty()){
+////            throw new InvalidParameterException("Unauthorised sender!");
+////        }
+//
+//        Optional<Users> reciever = crudService.getUserById(shareFileDto.getRecieverId());
+//
+////        if(reciever.isEmpty()){
+////            throw new InvalidParameterException("Unauthorised reciever!");
+////        }
+//
+//        return shareFileService.saveFileShareDetails(shareFileDto);
+//    }
 
-
+    @CrossOrigin(origins = "http://localhost:3000") // Adjust the origin according to your frontend application's URL
+    @PostMapping("/share")
+    public ResponseEntity<String> shareFile(@RequestBody ShareFileDto shareFileDto) {
         Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
 
-//        if(sender.isEmpty()){
-//            throw new InvalidParameterException("Unauthorised sender!");
-//        }
+        if (sender.isEmpty()) {
+            throw new InvalidParameterException("Unauthorized sender!");
+        }
 
-        Optional<Users> reciever = crudService.getUserById(shareFileDto.getRecieverId());
+        Optional<Users> receiver = crudService.getUserById(shareFileDto.getRecieverId());
 
-//        if(reciever.isEmpty()){
-//            throw new InvalidParameterException("Unauthorised reciever!");
-//        }
+        if (receiver.isEmpty()) {
+            throw new InvalidParameterException("Unauthorized receiver!");
+        }
 
-        return shareFileService.saveFileShareDetails(shareFileDto);
+        shareFileService.saveFileShareDetails(shareFileDto);
+
+        return ResponseEntity.ok("File share details saved successfully.");
     }
 
     // Get Inbox
