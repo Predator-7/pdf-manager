@@ -102,20 +102,9 @@ public class FileController {
 
     // Share Api to share the pdfs
     @CrossOrigin("*")
-    @PostMapping("/share")
+    @PostMapping("/share" )
     public String shareFile(@RequestBody ShareFileDto shareFileDto){
 
-        /*
-
-        @RequestMapping(value = "/share", method = RequestMethod.OPTIONS)
-public ResponseEntity<?> handleOptions() {
-    HttpHeaders headers = new HttpHeaders();
-    headers.add("Access-Control-Allow-Origin", "http://localhost:3000");
-    headers.add("Access-Control-Allow-Methods", "POST");
-    headers.add("Access-Control-Allow-Headers", "Content-Type");
-    return new ResponseEntity<>(headers, HttpStatus.OK);
-}
-         */
 
         Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
 

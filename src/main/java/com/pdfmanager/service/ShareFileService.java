@@ -34,7 +34,7 @@ public class ShareFileService {
         return "File Sent successfully!";
 
     }
-
+    @CrossOrigin("*")
     public List<SharedFiles> getInbox(Long id){
 
         return sharedFilesRepository.findAllByRecieverId(id);

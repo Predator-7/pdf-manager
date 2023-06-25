@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public interface SharedFilesRepository extends JpaRepository<SharedFiles , Long> {
-
+    @CrossOrigin("*")
     List<SharedFiles> findAllByRecieverId(Long receiverId);
 
 }

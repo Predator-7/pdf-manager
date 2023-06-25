@@ -19,7 +19,7 @@ public class CrudService {
 
     @Autowired
     private UserRepository userRepository;
-
+    @CrossOrigin("*")
     public List<Users> getCustomersByName(String name) {
         return userRepository.findByUserName(name);
     }
@@ -27,33 +27,33 @@ public class CrudService {
     public Optional<Users> getUserById(Long id) {
         return userRepository.findById(id);
     }
-
+    @CrossOrigin("*")
     public List<Users> getCustomers(){
         return userRepository.findAll();
     }
-
+    @CrossOrigin("*")
     public List<Users> findUserByEmailAndUserName(String email, String userName) {
         return userRepository.findByEmailAndUserName(email, userName);
     }
     // findByEmailAndUserNameAndPassword(String email, String userName, String password);
 
 
-
+    @CrossOrigin("*")
     public Users verifyUser(String email, String userName, String password){
         return userRepository.findByEmailAndUserNameAndPassword(email,userName,password);
     }
-
+    @CrossOrigin("*")
     public Users findUserbyEmailAndPassword(String email , String password){
         return userRepository.findByEmailAndPassword(email , password);
     }
-
+    @CrossOrigin("*")
     public Users findByIdAndEmail(Long id , String email){
         return userRepository.findByIdAndEmail(id , email);
     }
 
 
 
-
+    @CrossOrigin("*")
     public Users saveUser(UserDto userDto){
 
         Users users = new Users();
@@ -63,7 +63,7 @@ public class CrudService {
         userRepository.save(users);
         return users;
     }
-
+    @CrossOrigin("*")
     public List<Users> getAllUsers(){
         return userRepository.findAll();
     }
