@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Service
 @Log4j2
-@CrossOrigin
+@CrossOrigin("*")
 public class CrudService {
 
     @Autowired
@@ -23,7 +23,7 @@ public class CrudService {
     public List<Users> getCustomersByName(String name) {
         return userRepository.findByUserName(name);
     }
-
+    @CrossOrigin("*")
     public Optional<Users> getUserById(Long id) {
         return userRepository.findById(id);
     }
