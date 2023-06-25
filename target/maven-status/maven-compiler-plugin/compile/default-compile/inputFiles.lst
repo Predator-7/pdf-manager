@@ -1,7 +1,9 @@
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\ErrorResponseDto.java
+C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\repository\CommentRepository.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\controller\FileController.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\service\UserService.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\common\EncryptionUtils.java
+C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\entity\Comment.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\repository\FileRepository.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\repository\SharedFilesRepository.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\UserDto.java
@@ -13,6 +15,7 @@ C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\se
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\entity\SharedFiles.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\MessageResponseDto.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\service\CrudService.java
+C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\controller\CommentController.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\entity\Files.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\service\AuthenticationService.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\AuthUserDto.java

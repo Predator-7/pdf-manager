@@ -44,6 +44,7 @@ public class FileController {
     private UserService userService;
 
     @PostMapping("/upload")
+    @CrossOrigin("*")
     public ResponseEntity<MessageResponseDto> uploadFile(@RequestParam("file") MultipartFile file) {
         String message = "";
 
@@ -60,6 +61,7 @@ public class FileController {
 
 
     @GetMapping("/files")
+    @CrossOrigin("*")
     public ResponseEntity<List<FileResponseDto>> getListFiles() {
         List<FileResponseDto> files = storageService.getAllFiles().map(dbFile -> {
             String fileDownloadUri = ServletUriComponentsBuilder
@@ -80,6 +82,7 @@ public class FileController {
 
 
     @GetMapping("/files/{id}")
+    @CrossOrigin("*")
     public ResponseEntity<byte[]> getFile(@PathVariable String id) {
         Files files = storageService.getFile(id);
 
@@ -99,6 +102,7 @@ public class FileController {
     // Share Api to share the pdfs
 
     @PostMapping("/share")
+    @CrossOrigin("*")
     private String shareFile(@RequestBody ShareFileDto shareFileDto){
 
         Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
@@ -119,6 +123,7 @@ public class FileController {
     // Get Inbox
 
     @GetMapping("inbox")
+    @CrossOrigin("*")
     private List<InboxResponseDto> getInbox(@RequestParam Long id){
         Optional<Users> users = crudService.getUserById(id);
 
