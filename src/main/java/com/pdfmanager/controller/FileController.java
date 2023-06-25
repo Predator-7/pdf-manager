@@ -1,14 +1,17 @@
 package com.pdfmanager.controller;
 
 import com.pdfmanager.dtos.FileResponseDto;
+import com.pdfmanager.dtos.InboxResponseDto;
 import com.pdfmanager.dtos.MessageResponseDto;
 import com.pdfmanager.dtos.ShareFileDto;
 import com.pdfmanager.entity.Files;
+import com.pdfmanager.entity.SharedFiles;
 import com.pdfmanager.entity.Users;
 import com.pdfmanager.exception.InvalidParameterException;
 import com.pdfmanager.service.CrudService;
 import com.pdfmanager.service.FileStorageService;
 import com.pdfmanager.service.ShareFileService;
+import com.pdfmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,6 +39,9 @@ public class FileController {
 
     @Autowired
     private CrudService crudService;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/upload")
     public ResponseEntity<MessageResponseDto> uploadFile(@RequestParam("file") MultipartFile file) {
@@ -108,6 +114,32 @@ public class FileController {
         }
 
         return shareFileService.saveFileShareDetails(shareFileDto);
+    }
+
+    // Get Inbox
+
+    @GetMapping("inbox")
+    private List<InboxResponseDto> getInbox(@RequestParam Long id){
+        Optional<Users> users = crudService.getUserById(id);
+
+        if(users.isEmpty()){
+            throw new InvalidParameterException("Unauthorised User!");
+        }
+
+        List<SharedFiles> sharedFiles = shareFileService.getInbox(id);
+
+        List<InboxResponseDto> dtoList = sharedFiles.stream()
+                .map(sharedFile -> {
+                    InboxResponseDto dto = new InboxResponseDto();
+                    dto.setSenderId(sharedFile.getSenderId());
+                    dto.setPdfUrl(sharedFile.getUrl());
+                    dto.setPdfName(sharedFile.getFilename());
+                    dto.setSenderName(userService.getUserName(sharedFile.getSenderId()));
+                    return dto;
+                })
+                .collect(Collectors.toList());
+
+        return dtoList;
     }
 
 

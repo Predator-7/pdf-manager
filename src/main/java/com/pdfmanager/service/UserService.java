@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -33,6 +34,17 @@ public class UserService {
 
 
         return users;
+    }
+
+    public String getUserName(Long id){
+        Optional<Users> users = crudService.getUserById(id);
+
+        if(users.isEmpty()){
+            return null;
+        }
+
+        return users.get().getUserName();
+
     }
 
 }

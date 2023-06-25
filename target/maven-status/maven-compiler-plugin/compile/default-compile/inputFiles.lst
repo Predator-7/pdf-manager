@@ -6,6 +6,7 @@ C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\re
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\repository\SharedFilesRepository.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\UserDto.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\exception\CustomExceptionHandler.java
+C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\InboxResponseDto.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\dtos\ShareFileDto.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\controller\Controllers.java
 C:\Users\anshg\Downloads\pdf-manager\pdf-manager\src\main\java\com\pdfmanager\service\ShareFileService.java

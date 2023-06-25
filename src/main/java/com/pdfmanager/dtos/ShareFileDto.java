@@ -12,4 +12,6 @@ public class ShareFileDto {
     private Long recieverId;
 
     private String url;
+
+    private String filename;
 }

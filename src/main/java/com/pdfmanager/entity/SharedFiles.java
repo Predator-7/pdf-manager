@@ -23,4 +23,6 @@ public class SharedFiles {
     private Long recieverId;
 
     private String url;
+
+    private String filename;
 }

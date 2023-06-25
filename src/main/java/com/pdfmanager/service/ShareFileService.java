@@ -7,6 +7,8 @@ import com.pdfmanager.repository.SharedFilesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ShareFileService {
 
@@ -20,6 +22,7 @@ public class ShareFileService {
             sharedFiles.setSenderId(shareFileDto.getSenderId());
             sharedFiles.setRecieverId(shareFileDto.getRecieverId());
             sharedFiles.setUrl(shareFileDto.getUrl());
+            sharedFiles.setFilename(shareFileDto.getFilename());
             sharedFilesRepository.save(sharedFiles);
 
         }catch (RuntimeException ex){
@@ -28,8 +31,14 @@ public class ShareFileService {
 
         return "File Sent successfully!";
 
-
     }
+
+    public List<SharedFiles> getInbox(Long id){
+
+        return sharedFilesRepository.findAllByRecieverId(id);
+    }
+
+
 
 
 }
