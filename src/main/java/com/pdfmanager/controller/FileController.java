@@ -103,7 +103,6 @@ public class FileController {
     // Share Api to share the pdfs
     @CrossOrigin("*")
     @PostMapping("/share")
-
     public String shareFile(@RequestBody ShareFileDto shareFileDto){
 
         /*
@@ -120,15 +119,15 @@ public ResponseEntity<?> handleOptions() {
 
         Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
 
-        if(sender.isEmpty()){
-            throw new InvalidParameterException("Unauthorised sender!");
-        }
+//        if(sender.isEmpty()){
+//            throw new InvalidParameterException("Unauthorised sender!");
+//        }
 
         Optional<Users> reciever = crudService.getUserById(shareFileDto.getRecieverId());
 
-        if(reciever.isEmpty()){
-            throw new InvalidParameterException("Unauthorised reciever!");
-        }
+//        if(reciever.isEmpty()){
+//            throw new InvalidParameterException("Unauthorised reciever!");
+//        }
 
         return shareFileService.saveFileShareDetails(shareFileDto);
     }

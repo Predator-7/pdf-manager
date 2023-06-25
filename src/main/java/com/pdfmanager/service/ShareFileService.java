@@ -16,7 +16,7 @@ public class ShareFileService {
 
     @Autowired
     private SharedFilesRepository sharedFilesRepository;
-
+    @CrossOrigin("*")
     public String saveFileShareDetails(ShareFileDto shareFileDto){
 
         try{
