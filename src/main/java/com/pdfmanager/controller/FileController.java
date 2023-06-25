@@ -104,7 +104,19 @@ public class FileController {
     @CrossOrigin("*")
     @PostMapping("/share")
 
-    private String shareFile(@RequestBody ShareFileDto shareFileDto){
+    public String shareFile(@RequestBody ShareFileDto shareFileDto){
+
+        /*
+
+        @RequestMapping(value = "/share", method = RequestMethod.OPTIONS)
+public ResponseEntity<?> handleOptions() {
+    HttpHeaders headers = new HttpHeaders();
+    headers.add("Access-Control-Allow-Origin", "http://localhost:3000");
+    headers.add("Access-Control-Allow-Methods", "POST");
+    headers.add("Access-Control-Allow-Headers", "Content-Type");
+    return new ResponseEntity<>(headers, HttpStatus.OK);
+}
+         */
 
         Optional<Users> sender = crudService.getUserById(shareFileDto.getSenderId());
 
@@ -125,7 +137,7 @@ public class FileController {
     @CrossOrigin("*")
     @GetMapping("inbox")
 
-    private List<InboxResponseDto> getInbox(@RequestParam Long id){
+    public List<InboxResponseDto> getInbox(@RequestParam Long id){
         Optional<Users> users = crudService.getUserById(id);
 
         if(users.isEmpty()){
